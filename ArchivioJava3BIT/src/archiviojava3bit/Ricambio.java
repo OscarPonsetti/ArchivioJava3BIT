@@ -75,10 +75,40 @@ public float getPrezzo()
     }
 
 //Metodi setter
+public void setCodice(String codice)
+    {
+    this.codice=codice;    
+    }
 
+public void setQuantita(int quantita)
+    {
+    this.quantita=quantita;
+    }
 
+public void setNome(String nome)
+    {
+    this.nome=nome;
+    }
 
+public void setPeso(float peso)
+    {
+    this.peso=peso;
+    }   
 
+public void setMateriale(String materiale)
+    {
+    this.materiale=materiale;
+    }
+
+public void setUso(String uso)
+    {
+    this.uso=uso;
+    }   
+
+public void setPrezzo(float prezzo)
+    {
+    this.prezzo=prezzo;
+    }
 
 
 }
