@@ -52,6 +52,28 @@ public class Archivio
     return null;
     }
 
+//Eliminare l'articolo nell'archivio
+
+public boolean elimina(String codice)
+    {
+    Ricambio ricambio;
+    
+    //Cerco il ricambio
+    ricambio =ricerca(codice);
+    
+    //Se  l'articolo c'è lo cancello dall?ArrayList
+    if(ricambio!=null)
+        {
+        magazzino.remove(ricambio);
+   
+        //Salvo tutto nel file ( da vedere)
+    
+        return true;
+        }
+    
+    return false;
+    }
+
 
 
 
