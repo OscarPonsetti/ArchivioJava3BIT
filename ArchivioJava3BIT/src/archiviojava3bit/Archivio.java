@@ -74,6 +74,26 @@ public boolean elimina(String codice)
     return false;
     }
 
+//Facciamo anche qua il metodo toString (per trasformare tutto il nostro archivio in stringa)
+
+public String toString ()
+    {
+    String s="";
+    for(int i=0;i<magazzino.size();i++)
+        {
+        //Prendo l'articolo in posizione i
+        Ricambio articolo = magazzino.get(i);
+        s = s + articolo.toString();
+        
+        if(i<magazzino.size()-1)
+            {
+            //Se non sono sull'ultimo prodotto metto il ritorno a capo.                
+            s = s + "\r\n";
+            }
+        }    
+    return s;    
+    }
+
 
 
 
