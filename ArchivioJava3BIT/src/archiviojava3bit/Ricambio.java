@@ -110,5 +110,42 @@ public void setPrezzo(float prezzo)
     this.prezzo=prezzo;
     }
 
+//Metodo che da la stringa e rappresenta il ricambio 
+
+@Override   //Argomento prossimo anno
+public String toString()
+    {
+    //La stringa inizierà col codice (che è gia di tipo stringa)
+    String s;
+    s= codice;
+    //Dobbiamo aggiungerci la virgola (metodo concat o il +)
+    s = s + ","; //Oppure s+=",";
+    
+    //Aggiungiamo gli altri campi
+    
+    //Per la quantità devo traformare int in string
+    s = s + Integer.toString(quantita);
+    s = s + ",";
+    
+    s = s + nome;
+    s = s + ",";
+    
+    s = s + Float.toString(peso);
+    s = s + ",";
+    
+    s = s + materiale;
+    s = s +",";
+    
+    s = s + uso;
+    s = s + ",";
+    
+    s = Float.toHexString(prezzo);
+    s = s + ",";
+    
+    return s;
+    }
+
+
+
 
 }
