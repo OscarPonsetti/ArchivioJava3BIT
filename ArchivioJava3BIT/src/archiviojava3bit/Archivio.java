@@ -76,7 +76,8 @@ public boolean elimina(String codice)
 
 //Facciamo anche qua il metodo toString (per trasformare tutto il nostro archivio in stringa)
 
-public String toString ()
+    @Override
+    public String toString ()
     {
     String s="";
     for(int i=0;i<magazzino.size();i++)
@@ -94,6 +95,95 @@ public String toString ()
     return s;    
     }
 
+//Metodo che visualizza l'elenco degli articoli
+
+public ArrayList <Ricambio> elencoRicambi()
+    {
+    return magazzino;
+    }
+
+//Metodo che cerca il ricambio in base al prezzo
+
+public ArrayList<Ricambio>  cercaRicambi(float prezzoMinimo, float prezzoMassimo)
+    {
+    //Creiamo un ArrayList locale che verrà rimepito con i ricambi con quel prezzo
+    ArrayList<Ricambio> articoliTrovati = new ArrayList(0);
+    int i;
+    for(i=0;i<magazzino.size();i++)
+            {
+            //Scorro l'ArrayList
+            Ricambio ricambio = magazzino.get(i);
+            
+            if(ricambio.getPrezzo()>=prezzoMinimo && ricambio.getPrezzo()<=prezzoMassimo)
+                {
+                //Ora aggiungo l'articolo all'ArrayList degli articoli trovati con quel prezzo
+                articoliTrovati.add(ricambio);                    
+                }
+            }        
+    //Adesso restituisco l'ArrayList (parametro del metodo)
+    return articoliTrovati;
+    }
+
+
+
+//Metodo che restituisce tutti gli articoli con uno specifico uso
+
+public ArrayList<Ricambio> cercaRicambioUso(String uso)
+    {
+    //Facciamo un ArrayList vuoto
+    ArrayList<Ricambio> articoloUso = new ArrayList (0);
+    
+    //Facciamo diventare la string passata tutta minuscola
+    String usoCercareMin = uso.toLowerCase();
+    
+    int i;
+    for(i=0;i<magazzino.size();i++)
+        {
+        //Prendiamo il ricambio in posizione i
+        Ricambio ricambio = magazzino.get(i);
+        String usoMin = ricambio.getUso();
+        
+        //usiamo il metodo contain
+        if(usoMin.contains(usoCercareMin));
+            {
+            //Lo aggiungo all'ArrayList articoloUso
+            articoloUso.add(ricambio);
+            
+            }
+        }
+    
+    //Restituisco l'ArrayList  
+    
+    return articoloUso;
+    }
+
+//Metodo che restituisce tutti gli atricoli con un determinato nome
+public ArrayList<Ricambio> cercaRicambioNome(String nome)
+    {
+    //Facciamo un ArrayList vuoto
+    ArrayList<Ricambio> articoloNome = new ArrayList (0);
+    
+    //Facciamo diventare la string passata tutta minuscola
+    String nomeCercareMin = nome.toLowerCase();
+    
+    int i;
+    for(i=0;i<magazzino.size();i++)
+        {
+        //Prendiamo il ricambio in posizione i
+        Ricambio ricambio = magazzino.get(i);
+        String nomeMin = ricambio.getUso();
+        
+        //usiamo il metodo contain
+        if(nomeMin.contains(nomeCercareMin));
+            {
+            //Lo aggiungo all'ArrayList articoloUso
+            articoloNome.add(ricambio);
+            }
+        }
+    
+    //Restituisco l'ArrayList  
+    return articoloNome;
+    }
 
 
 
