@@ -39,11 +39,16 @@ public class Archivio
 
  //Mi permette di inserire un articolo nel magazzino (gli passiamo un oggetto di tipo ricambio)
     
-    public void inserimento(Ricambio ricambio)
+    public boolean inserimento(Ricambio ricambio)
         {
-        //Questo metodo deve aggiungere l'oggetto ricevuto nell'ArrayList
-        magazzino.add(ricambio);
-        //Il metodo add aggiunge un oggetto alla fine dell'ArrayList
+        // controllo che non ci sia già un ricambio con lo stesso codice
+        if (Archivio.this.ricerca(ricambio.getCodice()) != null)
+            {
+            return false;
+            }    
+         magazzino.add(ricambio);
+         SalvaSuFile();
+         return true;                
         }
 
 //Faccio un metodo che cerchi nell'archivio (trova il codice), viene passato il codice
@@ -55,7 +60,7 @@ public class Archivio
         {
         //Prima ci facciamo restituire l'oggetto (il codice è dentro la classe)
         Ricambio ricambio = magazzino.get(i);
-        if(ricambio.getCodice()==codice)
+        if(ricambio.getCodice().equals(codice))
             {
             return ricambio;
             }
@@ -212,11 +217,13 @@ private ArrayList<Ricambio> leggiDaFile()
             ArrayList<Ricambio> articoli;
             articoli = new ArrayList();
             
+        //Usiamo l'oggetto di tipo file reader (gli passiamo il nome del file)
+        FileReader fileReader;
+        
         try {
             
             
-            //Usiamo l'oggetto di tipo file reader (gli passiamo il nome del file)
-            FileReader fileReader;
+            
             
             //Cotruiamo il fileReader e gli passiamo
             
@@ -230,11 +237,12 @@ private ArrayList<Ricambio> leggiDaFile()
             //Leggiamo linae per linea
             
             String linea;
+            String campi[];
             
             //Legge la linea dal file e la assegna alla linea, se è uguale a null (niente) esce dal file (perché arrivato alla fine delle righe)
             while( (linea = input.readLine()) != null)
                 {
-                String campi[];
+                
                 
                 //Dividiamo i campi 
                 
@@ -243,17 +251,18 @@ private ArrayList<Ricambio> leggiDaFile()
                 //Es in campi[0] ci sarà il codice dell'articolo
                 //Eh via così per campi[ ......]
                 
-                //Converto le due stringhe in intero per la quantità, e in float per il prezzo
+                //Converto le due stringhe in intero per la quantità, e in float per il prezzo e per il peso
                 int quantita = Integer.parseInt(campi[1]);
-                float prezzo = Float.parseFloat(campi[6]);
                 float peso = Float.parseFloat(campi[3]);
+                float prezzo = Float.parseFloat(campi[6]);
+                
                 
                 
                 //Ora creo l'articolo
                 
                 Ricambio ricambio = new Ricambio(campi[0], quantita, campi[2], peso, campi[4], campi[5], prezzo);
                 
-                magazzino.add(ricambio);
+                articoli.add(ricambio);
                 }   
             
             
@@ -266,18 +275,19 @@ private ArrayList<Ricambio> leggiDaFile()
             
         }
     //Diamo l'array in return
-        return magazzino;  
+        return articoli;  
     }
 
     //Metodo che salva tutti i dati nel file archivio.csv
     
     private void SalvaSuFile()
         {
+         FileWriter out;
         try {
             //Prende l'oggetto magazzino e lo salva sotto forma di stringa nel file (usiamo il metodo che abbiamo costruito toString)
             
             //Creiamo un oggetto per  scrivere sul file
-            FileWriter out;
+           
             
             //Mettiamo tutto in un try-catch
             
