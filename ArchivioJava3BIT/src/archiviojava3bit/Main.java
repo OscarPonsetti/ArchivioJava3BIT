@@ -126,6 +126,7 @@ public static void main(String[] args)
         if(scelta == 8 )
             {
             decisione=8;
+            saluta();
             }
             else
                 {
@@ -169,6 +170,33 @@ private static int menu()
         return sceltaut;
     }
 
+private static void saluta()
+    {
+    System.out.println("Grazie per aver utilizato questo programma ---->>> Creato da OsCaR PoNsEtTi!!!");
+    System.out.println("_____0101010101____________________");
+    System.out.println("____010101010101010_________________");
+    System.out.println("__010101010101010101________________");
+    System.out.println("_01010101010101010101_______________");
+    System.out.println("010101010101010101010101010101______");
+    System.out.println("01010101010101010101010101010111___");
+    System.out.println("0101010101010101010101010101011001__");
+    System.out.println("_010101010101010101010101010101001_");
+    System.out.println("__0101010101010101010101010101011010");
+    System.out.println("___01010101010101010101010101011010");
+    System.out.println("____010101010101010101010101022011");
+    System.out.println("_____0101010101010101010101222011_");
+    System.out.println("______01010100010101010101010101");
+    System.out.println("_______010101010101010102010010");
+    System.out.println("________010100100101010101001");
+    System.out.println("_________010101010100101010");
+    System.out.println("__________01010101010101____________");
+    System.out.println("___________0101010101_______________");
+    System.out.println("____________0101010_________________");
+    System.out.println("_____________01010__________________");
+    System.out.println("______________011___________________");
+    System.out.println("_______________0____________________	");
+    
+    }
 
 private static void stampaElencoRicambi(ArrayList<Ricambio> elencoRicambio)
     {
@@ -203,6 +231,7 @@ private static void stampaElencoRicambi(ArrayList<Ricambio> elencoRicambio)
             
     System.out.println("\n");       
     }
+
 
 
 

@@ -103,14 +103,14 @@ public boolean elimina(String codice)
     for(int i=0;i<magazzino.size();i++)
         {
         //Prendo l'articolo in posizione i
-        Ricambio articolo = magazzino.get(i);
-        s = s + articolo.toString();
+        Ricambio articolo;
+        articolo = magazzino.get(i);
+        s += articolo.toString();
         
-        if(i<magazzino.size()-1)
-            {
-            //Se non sono sull'ultimo prodotto metto il ritorno a capo.                
-            s = s + "\r\n";
-            }
+        
+        //Se non sono sull'ultimo prodotto metto il ritorno a capo.                
+        s = s + "\r\n";
+           
         }    
     return s;    
     //Questo metodo converte l'articolo in stringa 
@@ -215,7 +215,7 @@ private ArrayList<Ricambio> leggiDaFile()
         //Eccezzioni try e catch
         //Creaiamo un ArrayList vuoto
             ArrayList<Ricambio> articoli;
-            articoli = new ArrayList();
+            articoli = new ArrayList(0);
             
         //Usiamo l'oggetto di tipo file reader (gli passiamo il nome del file)
         FileReader fileReader;
