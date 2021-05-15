@@ -98,29 +98,93 @@ public static void main(String[] args)
             break;
 
             case 3:
+            //Permette all'utente di eliminare un ricambio
+            //1. Chiedo all'utente di inserire il codice del ricambio da eliminare    
+            System.out.println("Inserisci il codice dell'oggetto da cancellare: ");
+            codice = tastiera.nextLine();
+            //2. Cancello l'articolo con quel codice
+            if(archivio.elimina(codice))
+                {
+                System.out.println("Articolo eliminato correttamente");
+                }
+            else
+                {
+                System.out.println("Articolo non trovato");
+                }
+            break;
+
+            case 4:
+            //Cercare un ricambio tra un intervallo di prezzo
+            float prezzoMinimo, prezzoMassimo;
+               
+            System.out.println("Prezzo Minimo: ");
+            //Converto l'input la stringa in input in float
+            prezzoMinimo = Float.parseFloat(tastiera.nextLine());
+            System.out.println("Prezzo Massimo");
+            prezzoMassimo = Float.parseFloat(tastiera.nextLine());
             
-                
-                
-                
-                
-                
-                
-                
-                
+            //Cerco il ricambio col metodo cercaRicambi
+            elencoRicambio = archivio.cercaRicambi(prezzoMinimo, prezzoMassimo);
+             
+            //Stampo il ricambio col metodo statico stampaElencoRicambi
+            stampaElencoRicambi(elencoRicambio);
+            
             break;
 
             case 5:
+            //Cercare un ricambio in base al nome
+            System.out.println("Nome: ");
+            nome = tastiera.nextLine();
             
-            break;
-
-            case 6:
+            elencoRicambio = archivio.cercaRicambioNome(nome);
             
+            stampaElencoRicambi(elencoRicambio);              
+                                
             break;
         
+            case 6:
+            System.out.println("Uso: ");
+            uso = tastiera.nextLine();
+                
+            elencoRicambio = archivio.cercaRicambioUso(uso);
+            
+            stampaElencoRicambi(elencoRicambio);
+                
+            break;
+            
             case 7:
+            //Permette di modificare un articolo
+            System.out.println("Inserisci il codice dell'articolo da modificare: ");
+            codice = tastiera.nextLine();
+            System.out.println("Inserisci la quantità: ");
+            quantita = Integer.parseInt(tastiera.nextLine());
+            System.out.println("Inserisci il nome: ");
+            nome = tastiera.nextLine();
+            System.out.println("Inserisci il Peso: ");
+            peso = Float.parseFloat(tastiera.nextLine());
+            System.out.println("Inserisci il Materiale: ");
+            materiale = tastiera.nextLine();
+            System.out.println("Inserisci l'uso: ");
+            uso = tastiera.nextLine();
+            System.out.println("Inserisci il prezzo: ");
+            prezzo = Float.parseFloat(tastiera.nextLine());
+            
+            //Avviso se la modifica è avvenuta correttamente
+            if(archivio.modificaRicambio(codice, quantita, nome, peso, materiale, uso, prezzo))
+                {
+                System.out.println("Modifica effettuata correttamente. ✔✔✔✔✔");            
+                }
+            else
+                {
+                System.out.println("Errore...✘✘✘✘✘✘");
+                }
+                
+                
+                
             
             break;
-             
+            
+            
                            
             }
         if(scelta == 8 )

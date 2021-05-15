@@ -60,6 +60,7 @@ public class Archivio
         {
         //Prima ci facciamo restituire l'oggetto (il codice è dentro la classe)
         Ricambio ricambio = magazzino.get(i);
+        //Metodo equals per vedere se due stringhe sono uguali
         if(ricambio.getCodice().equals(codice))
             {
             return ricambio;
@@ -77,7 +78,7 @@ public boolean elimina(String codice)
     Ricambio ricambio;
     
     //Cerco il ricambio
-    ricambio =ricerca(codice);
+    ricambio = ricerca(codice);
     
     //Se  l'articolo c'è lo cancello dall?ArrayList
     if(ricambio!=null)
@@ -161,14 +162,14 @@ public ArrayList<Ricambio> cercaRicambioUso(String uso)
     for(i=0;i<magazzino.size();i++)
         {
         //Prendiamo il ricambio in posizione i
-        Ricambio ricambio = magazzino.get(i);
-        String usoMin = ricambio.getUso();
+        String usoMin = magazzino.get(i).getUso().toLowerCase().trim();
+        
         
         //usiamo il metodo contain
-        if(usoMin.contains(usoCercareMin));
+        if(usoMin.contains(usoCercareMin))
             {
             //Lo aggiungo all'ArrayList articoloUso
-            articoloUso.add(ricambio);
+            articoloUso.add(magazzino.get(i));
             
             }
         }
@@ -191,14 +192,13 @@ public ArrayList<Ricambio> cercaRicambioNome(String nome)
     for(i=0;i<magazzino.size();i++)
         {
         //Prendiamo il ricambio in posizione i
-        Ricambio ricambio = magazzino.get(i);
-        String nomeMin = ricambio.getUso();
+        String nomeMin = magazzino.get(i).getNome().toLowerCase().trim();
         
         //usiamo il metodo contain
-        if(nomeMin.contains(nomeCercareMin));
+        if(nomeMin.contains(nomeCercareMin))
             {
             //Lo aggiungo all'ArrayList articoloUso
-            articoloNome.add(ricambio);
+            articoloNome.add(magazzino.get(i));
             }
         }
     
@@ -207,6 +207,37 @@ public ArrayList<Ricambio> cercaRicambioNome(String nome)
     }
 //Metodo per restituisre un array list di tipo ricambio dal file
 
+
+
+//Metodo che permette di modificare un articolo
+public boolean modificaRicambio(String codice, int quantita, String nome, float peso, String materiale, String uso, float prezzo)
+    {
+    //Cerco l'articolo in base al codice inserito dall'utente
+    Ricambio ricambio;
+    //Richiamo il metodo ricerca
+    ricambio = Archivio.this.ricerca(codice);
+    
+    //Se è presente l'archivio col codice modifico le caratteristiche
+    if(ricambio!=null)
+        {
+        //Uso i metodi setter
+        ricambio.setQuantita(quantita);
+        ricambio.setNome(nome);
+        ricambio.setPeso(peso);
+        ricambio.setMateriale(materiale);
+        ricambio.setUso(uso);
+        ricambio.setPrezzo(prezzo);
+        
+        //Salvo l'archivio aggiornato sul disco
+        SalvaSuFile();
+        
+        return true;        
+        }
+    else
+        {
+    return false;
+        }
+    }
 
 
 
@@ -239,7 +270,7 @@ private ArrayList<Ricambio> leggiDaFile()
             String linea;
             String campi[];
             
-            //Legge la linea dal file e la assegna alla linea, se è uguale a null (niente) esce dal file (perché arrivato alla fine delle righe)
+            //Legge la linea dal file e l'assegna alla linea, se è uguale a null (niente) esce dal file (perché arrivato alla fine delle righe)
             while( (linea = input.readLine()) != null)
                 {
                 
@@ -258,7 +289,7 @@ private ArrayList<Ricambio> leggiDaFile()
                 
                 
                 
-                //Ora creo l'articolo
+                //Ora creo il ricambio
                 
                 Ricambio ricambio = new Ricambio(campi[0], quantita, campi[2], peso, campi[4], campi[5], prezzo);
                 
