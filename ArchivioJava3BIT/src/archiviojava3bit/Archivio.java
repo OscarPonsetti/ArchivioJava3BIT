@@ -156,7 +156,7 @@ public ArrayList<Ricambio> cercaRicambioUso(String uso)
     ArrayList<Ricambio> articoloUso = new ArrayList (0);
     
     //Facciamo diventare la string passata tutta minuscola
-    String usoCercareMin = uso.toLowerCase();
+    String usoCercareMin = uso.toLowerCase().trim();
     
     int i;
     for(i=0;i<magazzino.size();i++)
@@ -186,7 +186,7 @@ public ArrayList<Ricambio> cercaRicambioNome(String nome)
     ArrayList<Ricambio> articoloNome = new ArrayList (0);
     
     //Facciamo diventare la string passata tutta minuscola
-    String nomeCercareMin = nome.toLowerCase();
+    String nomeCercareMin = nome.toLowerCase().trim();
     
     int i;
     for(i=0;i<magazzino.size();i++)
