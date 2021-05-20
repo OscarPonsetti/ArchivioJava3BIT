@@ -215,7 +215,7 @@ public boolean modificaRicambio(String codice, int quantita, String nome, float 
     //Cerco l'articolo in base al codice inserito dall'utente
     Ricambio ricambio;
     //Richiamo il metodo ricerca
-    ricambio = Archivio.this.ricerca(codice);
+    ricambio = ricerca(codice);
     
     //Se è presente l'archivio col codice modifico le caratteristiche
     if(ricambio!=null)
