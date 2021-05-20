@@ -146,6 +146,25 @@ public ArrayList<Ricambio>  cercaRicambi(float prezzoMinimo, float prezzoMassimo
     return articoliTrovati;
     }
 
+//Metodo per ricerca in un intervallo di peso
+
+public ArrayList<Ricambio> cercaPeso(float pesoMin, float pesoMax)
+    {
+    //Creo ArrayList
+    ArrayList<Ricambio> articoliTrovatiPeso = new ArrayList(0);
+    
+    for(int i=0;i<magazzino.size();i++)
+        {
+        
+        Ricambio r = magazzino.get(i);
+            
+            if(r.getPeso()>=pesoMin && r.getPeso()<=pesoMax)
+            {
+            articoliTrovatiPeso.add(r);
+            }
+        }
+    return articoliTrovatiPeso;
+    }
 
 
 //Metodo che restituisce tutti gli articoli con uno specifico uso
@@ -177,6 +196,31 @@ public ArrayList<Ricambio> cercaRicambioUso(String uso)
     //Restituisco l'ArrayList  
     
     return articoloUso;
+    }
+
+//Metodo che permette la ricerca per materiale
+public ArrayList <Ricambio> cercaRicambioMateriale(String materiale)
+    {
+    //ArraList vuoto
+    ArrayList<Ricambio> articoloMateriale = new ArrayList(0);
+
+    //Faccio diventare la stringa passata minuscola e senza spazi
+    String materialeMin = materiale.toLowerCase().trim();
+    
+    for(int i=0;i<magazzino.size();i++)
+        {
+        //Converto in minuscolo senza spazzi il materiale del ricambio
+        String MinMaterialeRicamio = magazzino.get(i).getMateriale().toLowerCase().trim();
+        
+        if(MinMaterialeRicamio.contains(materiale))
+            {
+            //Lo aggiungo all'ArrayList
+            articoloMateriale.add(magazzino.get(i));             
+            }
+    
+    
+        }
+    return articoloMateriale; 
     }
 
 //Metodo che restituisce tutti gli atricoli con un determinato nome

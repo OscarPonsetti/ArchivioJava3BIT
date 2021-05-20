@@ -168,7 +168,7 @@ public static void main(String[] args)
             uso = tastiera.nextLine();
             System.out.println("Inserisci il prezzo: ");
             prezzo = Float.parseFloat(tastiera.nextLine());
-            
+          
             //Avviso se la modifica è avvenuta correttamente
             if(archivio.modificaRicambio(codice, quantita, nome, peso, materiale, uso, prezzo))
                 {
@@ -185,7 +185,36 @@ public static void main(String[] args)
             break;
             
             
-                           
+            case 9:
+            //Ricerca per materiale
+            System.out.println("Materiale: ");
+            materiale = tastiera.nextLine();
+            
+            elencoRicambio = archivio.cercaRicambioMateriale(materiale);
+            
+            //Stampo
+            stampaElencoRicambi(elencoRicambio);
+             
+            break;
+            
+            case 10:
+            //Ricerca intervallo di peso
+            float pesoMin, pesoMax;
+            
+            System.out.println("Peso Minore: ");
+            pesoMin = Float.parseFloat(tastiera.nextLine());
+                
+            System.out.println("Peso Maggiore: ");
+            pesoMax = Float.parseFloat(tastiera.nextLine());
+            
+            //Richiamo il metodo che cerca
+            elencoRicambio = archivio.cercaPeso(pesoMin, pesoMax);
+            
+            //Stampo
+            stampaElencoRicambi(elencoRicambio);            
+            
+            break;
+            
             }
         if(scelta == 8 )
             {
@@ -224,6 +253,10 @@ private static int menu()
         System.out.println("║ 6)Cercare un ricambio in base all'uso;                                                    ║");
         System.out.println("╠══════════════════════════════════════════════════════════════════════════════════════════════════════════╣");
         System.out.println("║ 7)Modificare un ricambio;                                                                 ║");
+        System.out.println("╠══════════════════════════════════════════════════════════════════════════════════════════════════════════╣");
+        System.out.println("║ 9)Cercare un ricambio in base al materiale                                                ║");
+        System.out.println("╠══════════════════════════════════════════════════════════════════════════════════════════════════════════╣");
+        System.out.println("║ 10)Cercare un ricambio in base al peso                                                    ║");
         System.out.println("╠══════════════════════════════════════════════════════════════════════════════════════════════════════════╣");
         System.out.println("║ 8)Uscita dal programma.                                                                   ║");
         System.out.println("╚══════════════════════════════════════════════════════════════════════════════════════════════════════════╝");
@@ -285,7 +318,7 @@ private static void stampaElencoRicambi(ArrayList<Ricambio> elencoRicambio)
         System.out.print("\t\t" + "|" + elencoRicambio.get(i).getPeso());
         System.out.print("\t\t" + "| " + elencoRicambio.get(i).getMateriale());
         System.out.print("\t" + "|  " + elencoRicambio.get(i).getUso());
-        System.out.println("\t" + "| " + elencoRicambio.get(i).getPrezzo() + " |");
+        System.out.println("\t" + "| " + elencoRicambio.get(i).getPrezzo());
         
         
         
