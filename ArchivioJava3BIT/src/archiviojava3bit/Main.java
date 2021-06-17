@@ -215,6 +215,16 @@ public static void main(String[] args)
             
             break;
             
+            case 11:
+            
+            float valoreArc;
+            
+            valoreArc = archivio.ValoreArchivio();
+            
+            System.out.println("Ecco quanto vale il tuo archivio: " + valoreArc + " €");
+                
+            break;
+            
             }
         if(scelta == 8 )
             {
@@ -257,6 +267,8 @@ private static int menu()
         System.out.println("║ 9)Cercare un ricambio in base al materiale                                                ║");
         System.out.println("╠══════════════════════════════════════════════════════════════════════════════════════════════════════════╣");
         System.out.println("║ 10)Cercare un ricambio in base al peso                                                    ║");
+        System.out.println("╠══════════════════════════════════════════════════════════════════════════════════════════════════════════╣");
+        System.out.println("║ 11)Valore complessivo dell'archivio                                                          ║");
         System.out.println("╠══════════════════════════════════════════════════════════════════════════════════════════════════════════╣");
         System.out.println("║ 8)Uscita dal programma.                                                                   ║");
         System.out.println("╚══════════════════════════════════════════════════════════════════════════════════════════════════════════╝");

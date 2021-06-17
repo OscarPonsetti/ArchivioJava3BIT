@@ -393,5 +393,16 @@ private ArrayList<Ricambio> leggiDaFile()
          
         }
 
-
+public float ValoreArchivio()
+    {
+    int i = 0; 
+    float contaPrezzo = 0;
+    //Scorriamo il nostro ArrayList `magazzino`
+    for(i=0;i<magazzino.size();i++)
+        {
+        contaPrezzo = contaPrezzo + magazzino.get(i).getPrezzo();
+        }
+    return contaPrezzo;
+    }
+    
 }
